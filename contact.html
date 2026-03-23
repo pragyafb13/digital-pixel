@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Digital Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; margin-top: 60px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: all 0.3s; }
+    [data-theme="light"] .contact-card { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .contact-card:hover { border-color: rgba(124,58,237,0.3); transform: translateX(4px); }
+    .contact-card-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-strong); margin-bottom: 4px; }
+    .contact-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+    .contact-card a { color: var(--purple); text-decoration: none; font-size: 0.85rem; }
+    .contact-form-card { background: var(--card); border: 1px solid var(--border); border-radius: 22px; padding: 40px; position: relative; overflow: hidden; }
+    [data-theme="light"] .contact-form-card { background: #fff; box-shadow: 0 4px 30px rgba(124,58,237,0.08); }
+    .contact-form-card::before { content:''; position:absolute; top:-1px; left:15%; right:15%; height:1px; background: linear-gradient(90deg, transparent, var(--purple), var(--grad-end), transparent); }
+    .contact-form-card h3 { font-size: 1.4rem; font-weight: 800; color: var(--text-strong); margin-bottom: 8px; }
+    .contact-form-card > p { color: var(--muted); font-size: 0.9rem; margin-bottom: 28px; }
+    .form-row { display: flex; gap: 16px; }
+    .form-row .form-group { flex: 1; }
+    .submit-btn { width: 100%; padding: 14px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); color: #fff; font-size: 0.95rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; margin-top: 8px; }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124,58,237,0.4); }
+    @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; } .form-row { flex-direction: column; gap: 0; } }
+  </style>
+</head>
+<body>
+<div id="nav-root"></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag"><span class="tag-dot"></span> Get in touch</div>
+    <h1>We'd love to <span class="hl">hear from you</span></h1>
+    <p>Whether you have a question, partnership inquiry, or just want to say hello — our team is ready to help.</p>
+  </div>
+</div>
+
+<section style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <div class="contact-card">
+          <div class="contact-card-icon">📧</div>
+          <div><h4>Email Us</h4><p>General inquiries</p><a href="mailto:hello@digitalpixel.io">hello@digitalpixel.io</a><br><a href="mailto:support@digitalpixel.io" style="margin-top:4px;display:block">support@digitalpixel.io</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📞</div>
+          <div><h4>Call Us</h4><p>Mon–Fri, 9am–6pm EST</p><a href="tel:+12125550100">+1 (212) 555-0100</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🏢</div>
+          <div><h4>Headquarters</h4><p>100 Innovation Boulevard<br>Suite 2400, New York<br>NY 10001, United States</p></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🌏</div>
+          <div><h4>APAC Office</h4><p>71 Robinson Road<br>#14-01, Singapore 068895</p></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">💬</div>
+          <div><h4>Live Chat</h4><p>Available on the platform<br>for registered partners</p><a href="login.html">Login to chat →</a></div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal-right">
+        <h3>Send us a message</h3>
+        <p>Fill in the form below and we'll get back to you within one business day.</p>
+        <form onsubmit="submitContact(event)">
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" class="form-input" placeholder="John" required></div>
+            <div class="form-group"><label>Last Name</label><input type="text" class="form-input" placeholder="Smith" required></div>
+          </div>
+          <div class="form-group"><label>Email</label><input type="email" class="form-input" placeholder="john@company.com" required></div>
+          <div class="form-group"><label>Company</label><input type="text" class="form-input" placeholder="Acme Inc."></div>
+          <div class="form-group">
+            <label>Inquiry Type</label>
+            <select class="form-input">
+              <option>General Inquiry</option>
+              <option>Partnership / Advertiser</option>
+              <option>Publisher Monetization</option>
+              <option>Influencer Program</option>
+              <option>Technical Support</option>
+              <option>Press / Media</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea class="form-input" rows="5" placeholder="Tell us how we can help…" style="resize:vertical" required></textarea></div>
+          <button type="submit" class="submit-btn" id="contact-btn">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<script src="nav.js"></script>
+<script>
+function submitContact(e) {
+  e.preventDefault();
+  var btn = document.getElementById('contact-btn');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  setTimeout(function() {
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #10B981, #06B6D4)';
+  }, 1500);
+}
+</script>
+</body>
+</html>

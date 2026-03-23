@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.{css,js,png,jpg,jpeg,gif,svg,ico,woff,woff2}",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)\\.html", "dest": "/$1.html" },
+    { "src": "/", "dest": "/index.html" },
+    { "src": "/(.*)", "dest": "/$1.html" }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}

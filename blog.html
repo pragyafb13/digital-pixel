@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Digital Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <style>
+    .blog-layout { display: grid; grid-template-columns: 1fr 320px; gap: 50px; align-items: start; }
+    .featured-post { background: var(--card); border: 1px solid var(--border); border-radius: 22px; overflow: hidden; margin-bottom: 32px; transition: all 0.3s; cursor: pointer; }
+    [data-theme="light"] .featured-post { background: #fff; box-shadow: 0 4px 24px rgba(124,58,237,0.08); }
+    .featured-post:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 20px 60px var(--shadow); }
+    .featured-img { height: 260px; background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.15)); display: flex; align-items: center; justify-content: center; font-size: 5rem; position: relative; }
+    [data-theme="light"] .featured-img { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(236,72,153,0.08)); }
+    .featured-content { padding: 28px; }
+    .post-tag { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; margin-bottom: 12px; }
+    .featured-content h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-strong); margin-bottom: 10px; line-height: 1.3; }
+    .featured-content p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 16px; }
+    .post-meta { display: flex; gap: 16px; align-items: center; }
+    .post-meta-item { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .read-more { color: var(--purple); font-weight: 700; font-size: 0.875rem; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .read-more:hover { gap: 10px; }
+
+    .blog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+    [data-theme="light"] .blog-card { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .blog-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-4px); box-shadow: 0 16px 50px var(--shadow); }
+    .blog-card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .blog-card-body { padding: 20px; }
+    .blog-card-body h3 { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); margin: 8px 0 8px; line-height: 1.4; }
+    .blog-card-body p { color: var(--muted); font-size: 0.82rem; line-height: 1.6; margin-bottom: 14px; }
+
+    .sidebar-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 24px; margin-bottom: 24px; position: sticky; top: 100px; }
+    [data-theme="light"] .sidebar-card { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .sidebar-title { font-size: 0.85rem; font-weight: 700; color: var(--text-strong); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .sidebar-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+    .topic-tag { padding: 6px 12px; border-radius: 8px; background: var(--input-bg); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .topic-tag:hover { border-color: var(--purple); color: var(--purple); }
+    .popular-post { display: flex; gap: 12px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .popular-post:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .popular-num { font-size: 1.5rem; font-weight: 900; color: var(--border); flex-shrink: 0; line-height: 1; }
+    .popular-post h4 { font-size: 0.82rem; font-weight: 700; color: var(--text-strong); margin-bottom: 4px; line-height: 1.4; }
+    .popular-post span { font-size: 0.72rem; color: var(--muted); }
+    .filters { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+    .filter-btn { padding: 8px 18px; border-radius: 50px; border: 1px solid var(--border); background: var(--input-bg); color: var(--muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--purple); color: var(--purple); background: rgba(124,58,237,0.08); }
+    @media(max-width:1024px) { .blog-layout { grid-template-columns: 1fr; } }
+    @media(max-width:600px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-root"></div>
+
+<div class="page-hero" style="padding-bottom:60px">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag"><span class="tag-dot"></span> Insights &amp; News</div>
+    <h1>The <span class="hl">Digital Pixel</span> Blog</h1>
+    <p>Industry insights, platform updates, and performance marketing strategies to help you grow.</p>
+  </div>
+</div>
+
+<section style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="filters reveal">
+      <button class="filter-btn active">All Posts</button>
+      <button class="filter-btn">Performance Marketing</button>
+      <button class="filter-btn">Influencer Marketing</button>
+      <button class="filter-btn">Technology</button>
+      <button class="filter-btn">Case Studies</button>
+      <button class="filter-btn">Industry News</button>
+    </div>
+
+    <div class="blog-layout">
+      <div>
+        <!-- Featured -->
+        <div class="featured-post reveal">
+          <div class="featured-img" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.15))">📊</div>
+          <div class="featured-content">
+            <span class="post-tag" style="background:rgba(124,58,237,0.12);color:#A78BFA">Performance Marketing</span>
+            <h2>The Complete Guide to Multi-Touch Attribution in 2025</h2>
+            <p>Understanding which touchpoints actually drive conversions is critical for optimizing your marketing spend. We break down every attribution model and when to use each one.</p>
+            <div class="post-meta" style="margin-bottom:14px">
+              <span class="post-meta-item">✍️ Sarah Chen</span>
+              <span class="post-meta-item">📅 March 15, 2025</span>
+              <span class="post-meta-item">⏱️ 12 min read</span>
+            </div>
+            <a href="#" class="read-more">Read Article →</a>
+          </div>
+        </div>
+
+        <!-- Grid posts -->
+        <div class="blog-grid">
+          <div class="blog-card reveal" style="transition-delay:0.05s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(16,185,129,0.12))">⭐</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(16,185,129,0.12);color:#10B981;font-size:0.7rem;padding:3px 10px;border-radius:50px">Influencer Marketing</span>
+              <h3>Why Micro-Influencers Drive 60% Higher ROI Than Mega Influencers</h3>
+              <p>Smaller audiences, bigger engagement. We analyzed 500 campaigns to find out why micro matters more.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Mar 10</span>
+                <a href="#" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal" style="transition-delay:0.1s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(236,72,153,0.15),rgba(124,58,237,0.12))">🛡️</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(236,72,153,0.12);color:#EC4899;font-size:0.7rem;padding:3px 10px;border-radius:50px">Technology</span>
+              <h3>How AI is Transforming Click Fraud Detection in 2025</h3>
+              <p>Machine learning models now catch 99.7% of invalid traffic before it reaches your budget.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Mar 5</span>
+                <a href="#" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal" style="transition-delay:0.15s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(6,182,212,0.12))">📱</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(6,182,212,0.12);color:#06B6D4;font-size:0.7rem;padding:3px 10px;border-radius:50px">Performance Marketing</span>
+              <h3>Mobile App Marketing Playbook: From Install to Loyal User</h3>
+              <p>A complete framework for reducing churn and maximizing LTV for mobile apps in 2025.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Feb 28</span>
+                <a href="#" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal" style="transition-delay:0.2s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(6,182,212,0.12))">💰</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(124,58,237,0.12);color:#A78BFA;font-size:0.7rem;padding:3px 10px;border-radius:50px">Publisher Tips</span>
+              <h3>5 Proven Ways to Double Your Publisher Revenue This Quarter</h3>
+              <p>Practical optimization tactics from our top-earning publishers — tactics you can apply today.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Feb 20</span>
+                <a href="#" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal" style="transition-delay:0.25s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(236,72,153,0.12))">🎯</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(16,185,129,0.12);color:#10B981;font-size:0.7rem;padding:3px 10px;border-radius:50px">Industry News</span>
+              <h3>Programmatic Advertising Trends to Watch in 2025</h3>
+              <p>From contextual targeting to privacy-first measurement — what's shaping the next generation of programmatic.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Feb 15</span>
+                <a href="#" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+          <div class="blog-card reveal" style="transition-delay:0.3s">
+            <div class="blog-card-img" style="background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(124,58,237,0.12))">📊</div>
+            <div class="blog-card-body">
+              <span class="post-tag" style="background:rgba(6,182,212,0.12);color:#06B6D4;font-size:0.7rem;padding:3px 10px;border-radius:50px">Case Study</span>
+              <h3>How Booking.com Achieved 3.2x ROAS with Digital Pixel</h3>
+              <p>A deep dive into the campaign strategy that transformed Booking.com's affiliate performance.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="post-meta-item">📅 Feb 8</span>
+                <a href="case-studies.html" class="read-more" style="font-size:0.8rem">Read →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-card reveal-right">
+          <div class="sidebar-title">Topics</div>
+          <div class="sidebar-topics">
+            <span class="topic-tag">Affiliate Marketing</span>
+            <span class="topic-tag">Attribution</span>
+            <span class="topic-tag">Influencers</span>
+            <span class="topic-tag">Fraud</span>
+            <span class="topic-tag">Mobile</span>
+            <span class="topic-tag">Publishers</span>
+            <span class="topic-tag">ROI</span>
+            <span class="topic-tag">Programmatic</span>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal-right" style="transition-delay:0.1s">
+          <div class="sidebar-title">Popular Posts</div>
+          <div class="popular-post">
+            <div class="popular-num">01</div>
+            <div><h4>Multi-Touch Attribution Guide 2025</h4><span>4.2K reads</span></div>
+          </div>
+          <div class="popular-post">
+            <div class="popular-num">02</div>
+            <div><h4>Why Micro-Influencers Drive 60% Higher ROI</h4><span>3.8K reads</span></div>
+          </div>
+          <div class="popular-post">
+            <div class="popular-num">03</div>
+            <div><h4>AI &amp; Click Fraud Detection in 2025</h4><span>2.9K reads</span></div>
+          </div>
+          <div class="popular-post">
+            <div class="popular-num">04</div>
+            <div><h4>Mobile App Marketing Playbook</h4><span>2.4K reads</span></div>
+          </div>
+        </div>
+
+        <div class="sidebar-card reveal-right" style="transition-delay:0.2s">
+          <div class="sidebar-title">Newsletter</div>
+          <p style="color:var(--muted);font-size:0.85rem;margin-bottom:14px;line-height:1.6">Get weekly performance marketing insights in your inbox.</p>
+          <input type="email" class="form-input" placeholder="Your email" style="margin-bottom:10px">
+          <button class="btn-hero-primary" style="width:100%;font-size:0.85rem;padding:11px">Subscribe →</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<script src="nav.js"></script>
+<script>
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Publishing — Digital Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <style>
+    .features-3col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 50px; }
+    .feat-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 28px; transition: all 0.3s; }
+    [data-theme="light"] .feat-card { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .feat-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-4px); box-shadow: 0 20px 50px var(--shadow); }
+    .feat-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-strong); margin: 14px 0 8px; }
+    .feat-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .ad-formats { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 40px; }
+    .ad-format-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; transition: all 0.2s; }
+    [data-theme="light"] .ad-format-card { background: #fff; }
+    .ad-format-card:hover { border-color: rgba(124,58,237,0.25); }
+    .af-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .af-name { font-size: 0.9rem; font-weight: 700; color: var(--text-strong); margin-bottom: 4px; }
+    .af-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+    @media(max-width:900px) { .features-3col, .two-col, .ad-formats { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-root"></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag"><span class="tag-dot"></span> For Advertisers</div>
+    <h1>Reach Audiences Where <span class="hl">They Read.</span></h1>
+    <p>Digital Pixel's digital publishing network connects your brand with premium editorial sites, newsletters, and content hubs. Place ads alongside trusted, brand-safe content that converts.</p>
+    <div class="hero-cta-row" style="margin-top:28px">
+      <a href="signup.html?role=advertiser" class="btn-hero-primary">Start Advertising →</a>
+      <a href="contact.html" class="btn-outline">Talk to Sales</a>
+    </div>
+  </div>
+</div>
+
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="stats-row reveal">
+      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="2">0</span>B+</div><div class="stat-label">Monthly Impressions</div></div>
+      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="5000">0</span>+</div><div class="stat-label">Publisher Sites</div></div>
+      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="40">0</span>+</div><div class="stat-label">Content Verticals</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg)">
+  <div class="section-inner">
+    <div style="text-align:center" class="reveal">
+      <div class="section-tag"><span class="tag-dot"></span> Why Digital Publishing</div>
+      <h2 class="section-title">Premium Content. <span class="hl">Premium Results.</span></h2>
+    </div>
+    <div class="features-3col">
+      <div class="feat-card reveal" style="transition-delay:0.05s">
+        <div class="icon-box">📰</div><h4>Premium Editorial Network</h4>
+        <p>Access 5,000+ vetted publisher sites spanning news, lifestyle, finance, tech, health, and more. Every site manually reviewed for brand safety and audience quality.</p>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:0.1s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#06B6D4,#10B981)">🎯</div><h4>Contextual Targeting</h4>
+        <p>Match your ads to content that's contextually relevant to your product. Reach readers at the exact moment they're primed to engage — no cookies required.</p>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:0.15s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#10B981,#06B6D4)">🛡️</div><h4>Brand Safety First</h4>
+        <p>Our automated and manual review processes ensure your ads never appear next to harmful, misleading, or off-brand content. Full category blocking available.</p>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:0.2s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#EC4899,#7C3AED)">📊</div><h4>Real-Time Reporting</h4>
+        <p>Track impressions, viewability, CTR, and conversion attribution across every publisher and placement in real time. Optimize spend with full transparency.</p>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:0.25s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#7C3AED,#EC4899)">✉️</div><h4>Newsletter Advertising</h4>
+        <p>Reach engaged, opted-in subscribers through 800+ premium email newsletters. Sponsored placements with publisher-native formatting drive exceptional CTRs.</p>
+      </div>
+      <div class="feat-card reveal" style="transition-delay:0.3s">
+        <div class="icon-box" style="background:linear-gradient(135deg,#06B6D4,#7C3AED)">⚡</div><h4>Performance Pricing</h4>
+        <p>Choose CPM for awareness or CPC/CPA for performance goals. Our dynamic optimization shifts budget toward the placements delivering the best results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div style="text-align:center" class="reveal">
+      <div class="section-tag"><span class="tag-dot"></span> Ad formats</div>
+      <h2 class="section-title">Every Format. <span class="hl">Every Placement.</span></h2>
+    </div>
+    <div class="ad-formats reveal">
+      <div class="ad-format-card"><span class="af-icon">📐</span><div><div class="af-name">Display Banners</div><div class="af-desc">Standard IAB sizes across leaderboard, rectangle, and skyscraper placements.</div></div></div>
+      <div class="ad-format-card"><span class="af-icon">✍️</span><div><div class="af-name">Native Articles</div><div class="af-desc">Publisher-native sponsored content that blends seamlessly with editorial tone.</div></div></div>
+      <div class="ad-format-card"><span class="af-icon">✉️</span><div><div class="af-name">Newsletter Spots</div><div class="af-desc">Dedicated placements within curated newsletter sends to engaged subscriber bases.</div></div></div>
+      <div class="ad-format-card"><span class="af-icon">🎬</span><div><div class="af-name">Video Pre-roll</div><div class="af-desc">In-stream video ads on publisher video players with completion rate tracking.</div></div></div>
+      <div class="ad-format-card"><span class="af-icon">🔲</span><div><div class="af-name">Interstitials</div><div class="af-desc">Full-page takeover formats for high-impact brand awareness on key publishers.</div></div></div>
+      <div class="ad-format-card"><span class="af-icon">🔗</span><div><div class="af-name">Content Links</div><div class="af-desc">In-text and sidebar recommendation links embedded naturally within editorial content.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg)">
+  <div class="section-inner reveal">
+    <div class="cta-band">
+      <h2>Ready to reach <span style="background:linear-gradient(135deg,var(--grad-start),var(--grad-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">2B+ readers?</span></h2>
+      <p>Set up your first digital publishing campaign in under 10 minutes.</p>
+      <div class="cta-buttons">
+        <a href="signup.html?role=advertiser" class="btn-hero-primary">Get Started Free →</a>
+        <a href="contact.html" class="btn-outline">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruAds — Campaign Health Monitoring · Digital Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <style>
+    .product-badge-red { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 30px; background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(245,158,11,0.15)); border: 1px solid rgba(239,68,68,0.3); color: #EF4444; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 20px; }
+    .product-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #EF4444; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+
+    .monitor-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 24px; max-width: 540px; margin: 40px auto 0; position: relative; overflow: hidden; }
+    [data-theme="light"] .monitor-card { background: #fff; box-shadow: 0 8px 40px rgba(239,68,68,0.1); }
+    .monitor-card::before { content:''; position:absolute; top:-1px; left:15%; right:15%; height:2px; background: linear-gradient(90deg, transparent, #EF4444, #F59E0B, transparent); }
+    .monitor-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .monitor-title-row { font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .health-indicator { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 20px; background: rgba(16,185,129,0.1); color: #10B981; font-size: 0.82rem; font-weight: 700; }
+    .health-dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
+    .metric-row { display: flex; gap: 12px; margin-bottom: 16px; }
+    .metric-tile { flex: 1; background: var(--bg2); border-radius: 12px; padding: 14px; text-align: center; }
+    [data-theme="light"] .metric-tile { background: var(--bg2); }
+    .metric-tile-val { font-size: 1.4rem; font-weight: 900; color: var(--text-strong); }
+    .metric-tile-val.green { color: #10B981; }
+    .metric-tile-val.red { color: #EF4444; }
+    .metric-tile-label { font-size: 0.7rem; color: var(--muted); margin-top: 3px; }
+    .alert-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; }
+    .alert-item.alert-ok { background: rgba(16,185,129,0.08); }
+    .alert-item.alert-warn { background: rgba(245,158,11,0.08); }
+    .alert-item.alert-bad { background: rgba(239,68,68,0.08); }
+    .alert-icon { font-size: 1rem; flex-shrink: 0; }
+    .alert-text { font-size: 0.82rem; color: var(--text); flex: 1; }
+    .alert-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+    .badge-ok { background: rgba(16,185,129,0.15); color: #10B981; }
+    .badge-warn { background: rgba(245,158,11,0.15); color: #F59E0B; }
+    .badge-bad { background: rgba(239,68,68,0.15); color: #EF4444; }
+
+    .features-3col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 50px; }
+    .feat-card-truads { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 28px; transition: all 0.3s; }
+    [data-theme="light"] .feat-card-truads { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .feat-card-truads:hover { border-color: rgba(239,68,68,0.3); transform: translateY(-4px); box-shadow: 0 20px 50px var(--shadow); }
+    .feat-icon-red { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #EF4444, #F59E0B); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 16px; }
+    .feat-card-truads h3 { font-size: 1rem; font-weight: 800; color: var(--text-strong); margin-bottom: 8px; }
+    .feat-card-truads p { color: var(--muted); font-size: 0.875rem; line-height: 1.6; }
+
+    .threat-types { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 50px; }
+    .threat-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; transition: all 0.3s; }
+    [data-theme="light"] .threat-card { background: #fff; box-shadow: 0 2px 14px rgba(124,58,237,0.06); }
+    .threat-card:hover { border-color: rgba(239,68,68,0.2); }
+    .threat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .threat-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); margin-bottom: 6px; }
+    .threat-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    .volume-bar-section { margin-top: 50px; }
+    .volume-bar-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .volume-bar-title { font-size: 1rem; font-weight: 700; color: var(--text-strong); }
+    .volume-bar-sub { font-size: 0.82rem; color: var(--muted); }
+    .bar-chart { display: flex; align-items: flex-end; gap: 8px; height: 120px; }
+    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .bar-fill { width: 100%; border-radius: 6px 6px 0 0; transition: height 0.5s; }
+    .bar-fill.clean { background: linear-gradient(180deg, #10B981, #06B6D4); }
+    .bar-fill.fraud { background: rgba(239,68,68,0.5); }
+    .bar-label { font-size: 0.68rem; color: var(--muted); }
+
+    @media(max-width:900px) { .features-3col { grid-template-columns: repeat(2,1fr); } .threat-types { grid-template-columns: 1fr; } }
+    @media(max-width:600px) { .features-3col { grid-template-columns: 1fr; } .metric-row { flex-wrap: wrap; } }
+  </style>
+</head>
+<body>
+<div id="nav-root"></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="product-badge-red"><span class="product-badge-dot"></span> TruAds by Digital Pixel</div>
+    <h1>Every Click. <span class="hl">Verified.</span></h1>
+    <p>TruAds monitors 500M+ links daily, detecting fraud, broken campaigns, and performance anomalies in real time. Protect your ad spend and ensure every dollar drives genuine results.</p>
+    <div class="hero-cta-row" style="margin-top:28px">
+      <a href="signup.html?role=advertiser" class="btn-hero-primary">Protect My Campaigns →</a>
+      <a href="contact.html" class="btn-outline">See a Demo</a>
+    </div>
+
+    <div class="monitor-card">
+      <div class="monitor-header">
+        <div class="monitor-title-row">Campaign Health Monitor</div>
+        <div class="health-indicator"><span class="health-dot"></span> Live</div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-tile"><div class="metric-tile-val">500M+</div><div class="metric-tile-label">Links Monitored Today</div></div>
+        <div class="metric-tile"><div class="metric-tile-val green">98.4%</div><div class="metric-tile-label">Clean Traffic</div></div>
+        <div class="metric-tile"><div class="metric-tile-val red">1.6%</div><div class="metric-tile-label">Flagged</div></div>
+      </div>
+      <div class="alert-item alert-ok">
+        <span class="alert-icon">✅</span>
+        <span class="alert-text">Campaign #4421 — Summer Sale — operating normally</span>
+        <span class="alert-badge badge-ok">Healthy</span>
+      </div>
+      <div class="alert-item alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <span class="alert-text">Campaign #4418 — App Install — unusual click velocity detected</span>
+        <span class="alert-badge badge-warn">Review</span>
+      </div>
+      <div class="alert-item alert-bad">
+        <span class="alert-icon">🚨</span>
+        <span class="alert-text">Publisher #891 — click farm pattern identified, paused</span>
+        <span class="alert-badge badge-bad">Blocked</span>
+      </div>
+      <div class="alert-item alert-ok">
+        <span class="alert-icon">✅</span>
+        <span class="alert-text">Campaign #4415 — Lead Gen — all conversions verified</span>
+        <span class="alert-badge badge-ok">Healthy</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div class="stats-row reveal">
+      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="500">0</span>M+</div><div class="stat-label">Links Monitored Daily</div></div>
+      <div class="stat-box"><div class="stat-number">$<span class="count-up" data-target="47">0</span>M+</div><div class="stat-label">Ad Spend Protected</div></div>
+      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="99">0</span>.2%</div><div class="stat-label">Detection Accuracy</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section style="background:var(--bg)">
+  <div class="section-inner">
+    <div style="text-align:center" class="reveal">
+      <div class="section-tag"><span class="tag-dot"></span> Platform Capabilities</div>
+      <h2 class="section-title">Full-Spectrum <span class="hl">Ad Protection</span></h2>
+    </div>
+    <div class="features-3col">
+      <div class="feat-card-truads reveal" style="transition-delay:0.05s">
+        <div class="feat-icon-red">🔍</div>
+        <h3>Click Fraud Detection</h3>
+        <p>Identify and block invalid clicks from bots, click farms, and competitor sabotage. Real-time signals analyzed across device, IP, timing, and behavioral patterns.</p>
+      </div>
+      <div class="feat-card-truads reveal" style="transition-delay:0.1s">
+        <div class="feat-icon-red">📡</div>
+        <h3>Link Health Monitoring</h3>
+        <p>Continuous uptime and redirect monitoring for every tracked link. Get instant alerts when a destination URL breaks, redirects incorrectly, or loads slowly.</p>
+      </div>
+      <div class="feat-card-truads reveal" style="transition-delay:0.15s">
+        <div class="feat-icon-red">🧬</div>
+        <h3>Conversion Verification</h3>
+        <p>Validate every reported conversion against raw session data. Catch inflated lead counts, duplicate submissions, and fraudulent CPA claims before you pay for them.</p>
+      </div>
+      <div class="feat-card-truads reveal" style="transition-delay:0.2s">
+        <div class="feat-icon-red">⚡</div>
+        <h3>Anomaly Alerting</h3>
+        <p>Statistical baselines built per campaign. Any deviation — sudden CTR spikes, geographic anomalies, conversion rate drops — triggers an immediate alert to your team.</p>
+      </div>
+      <div class="feat-card-truads reveal" style="transition-delay:0.25s">
+        <div class="feat-icon-red">🌍</div>
+        <h3>Geo-Compliance Checks</h3>
+        <p>Ensure your ads only reach users in your targeted geographies. Automatically block traffic from restricted countries and report on geo-compliance violations.</p>
+      </div>
+      <div class="feat-card-truads reveal" style="transition-delay:0.3s">
+        <div class="feat-icon-red">📋</div>
+        <h3>Audit-Ready Reports</h3>
+        <p>Generate detailed forensic reports for any publisher or campaign. Full evidence packages for chargebacks, disputes, and compliance documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Threat Types -->
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div style="text-align:center" class="reveal">
+      <div class="section-tag"><span class="tag-dot"></span> What we catch</div>
+      <h2 class="section-title">Every Threat <span class="hl">Covered</span></h2>
+    </div>
+    <div class="threat-types">
+      <div class="threat-card reveal" style="transition-delay:0.05s">
+        <div class="threat-icon">🤖</div>
+        <div><h4>Bot Traffic</h4><p>Non-human visitors generated by automated scripts, scrapers, and headless browsers are identified via behavioral fingerprinting and blocked instantly.</p></div>
+      </div>
+      <div class="threat-card reveal" style="transition-delay:0.1s">
+        <div class="threat-icon">🏭</div>
+        <div><h4>Click Farms</h4><p>Organized human click fraud from device farms or paid click operations is detected through device clustering, IP analysis, and click velocity patterns.</p></div>
+      </div>
+      <div class="threat-card reveal" style="transition-delay:0.15s">
+        <div class="threat-icon">👥</div>
+        <div><h4>Domain Spoofing</h4><p>Publishers misrepresenting their domain or traffic source to claim premium rates are identified through domain verification and traffic source auditing.</p></div>
+      </div>
+      <div class="threat-card reveal" style="transition-delay:0.2s">
+        <div class="threat-icon">♻️</div>
+        <div><h4>Attribution Fraud</h4><p>Last-click hijacking, cookie stuffing, and affiliate attribution manipulation are caught by cross-referencing conversion paths against session data.</p></div>
+      </div>
+      <div class="threat-card reveal" style="transition-delay:0.25s">
+        <div class="threat-icon">🎭</div>
+        <div><h4>Incentivized Traffic</h4><p>Users paid or rewarded to click ads are identified through engagement signals — lack of session depth, instant bounces, and abnormal conversion timing.</p></div>
+      </div>
+      <div class="threat-card reveal" style="transition-delay:0.3s">
+        <div class="threat-icon">🧩</div>
+        <div><h4>Pixel Stuffing & Ad Stacking</h4><p>Invisible ad placements and stacked display units are detected through creative dimension analysis and viewability scoring across all placements.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--bg)">
+  <div class="section-inner reveal">
+    <div class="cta-band">
+      <h2>Stop paying for <span style="background:linear-gradient(135deg,#EF4444,#F59E0B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">fake traffic</span></h2>
+      <p>Connect TruAds to your campaigns in 5 minutes. Free 30-day trial included.</p>
+      <div class="cta-buttons">
+        <a href="signup.html?role=advertiser" class="btn-hero-primary">Start Monitoring →</a>
+        <a href="contact.html" class="btn-outline">Talk to an Expert</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<script src="nav.js"></script>
+</body>
+</html>

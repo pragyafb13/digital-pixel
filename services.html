@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Digital Pixel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <style>
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
+    .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: all 0.3s; position: relative; overflow: hidden; }
+    [data-theme="light"] .service-card { background: #fff; box-shadow: 0 4px 20px rgba(124,58,237,0.07); }
+    .service-card:hover { border-color: rgba(124,58,237,0.35); transform: translateY(-6px); box-shadow: 0 24px 60px var(--shadow); }
+    .service-card.highlight { border-color: rgba(124,58,237,0.35); background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(6,182,212,0.04) 100%); }
+    [data-theme="light"] .service-card.highlight { background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, rgba(236,72,153,0.03) 100%); }
+    .service-card.highlight::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); }
+    .service-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 800; color: var(--text-strong); margin-bottom: 10px; }
+    .service-card p { color: var(--muted); font-size: 0.875rem; line-height: 1.65; margin-bottom: 20px; }
+    .service-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .service-features li { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .service-features li::before { content: '✓'; width: 16px; height: 16px; border-radius: 50%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); display: flex; align-items: center; justify-content: center; font-size: 0.55rem; color: #fff; flex-shrink: 0; }
+    .service-link { color: var(--purple); font-size: 0.875rem; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+    .service-link:hover { gap: 10px; }
+
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 50px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 28px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); opacity: 0.3; }
+    .process-step { text-align: center; }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--grad-start), var(--grad-end)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; color: #fff; margin: 0 auto 16px; position: relative; z-index: 1; box-shadow: 0 0 20px rgba(124,58,237,0.4); }
+    .process-step h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-strong); margin-bottom: 8px; }
+    .process-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    @media(max-width:1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } .process-steps { grid-template-columns: repeat(2, 1fr); } .process-steps::before { display: none; } }
+    @media(max-width:600px) { .services-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="nav-root"></div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="section-tag"><span class="tag-dot"></span> What we offer</div>
+    <h1>End-to-End <span class="hl">Performance</span><br>Marketing Services</h1>
+    <p>From strategy to execution, Digital Pixel provides every service you need to acquire customers, monetize audiences, and scale your brand.</p>
+  </div>
+</div>
+
+<!-- Services Grid -->
+<section style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="services-grid">
+      <div class="service-card highlight reveal" style="transition-delay:0.05s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(6,182,212,0.1))">📢</div>
+        <h3>Affiliate Marketing</h3>
+        <p>Performance-based campaigns with real-time tracking and transparent reporting across 500+ publisher networks.</p>
+        <ul class="service-features">
+          <li>Multi-touch attribution</li>
+          <li>CPA, CPL, CPC models</li>
+          <li>Real-time dashboard</li>
+          <li>Fraud protection included</li>
+        </ul>
+        <a href="advertisers.html" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(16,185,129,0.1))">🎯</div>
+        <h3>Programmatic Display</h3>
+        <p>Automated ad buying with advanced audience targeting, retargeting, and dynamic creative optimization at scale.</p>
+        <ul class="service-features">
+          <li>RTB (Real-Time Bidding)</li>
+          <li>Audience segmentation</li>
+          <li>Dynamic creative</li>
+          <li>Cross-device attribution</li>
+        </ul>
+        <a href="digital-publishing.html" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.15s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.1))">⭐</div>
+        <h3>Influencer Marketing</h3>
+        <p>End-to-end influencer campaign management from discovery and verification to contracts, content, and payouts.</p>
+        <ul class="service-features">
+          <li>250K+ verified creators</li>
+          <li>Campaign analytics</li>
+          <li>Automated contracts</li>
+          <li>Performance-based payouts</li>
+        </ul>
+        <a href="inflaura.html" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(236,72,153,0.2),rgba(124,58,237,0.1))">📱</div>
+        <h3>Mobile &amp; App Marketing</h3>
+        <p>User acquisition campaigns for mobile apps with install tracking, in-app event attribution, and SKAN compliance.</p>
+        <ul class="service-features">
+          <li>iOS &amp; Android campaigns</li>
+          <li>SKAN 4 compliant</li>
+          <li>Retargeting &amp; re-engagement</li>
+          <li>LTV optimization</li>
+        </ul>
+        <a href="mobile-apps.html" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.25s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(236,72,153,0.1))">🏷️</div>
+        <h3>White Label Platform</h3>
+        <p>Deploy a fully branded performance marketing platform for your agency or network with all Digital Pixel capabilities.</p>
+        <ul class="service-features">
+          <li>Custom branding &amp; domain</li>
+          <li>Full feature access</li>
+          <li>Dedicated account manager</li>
+          <li>Revenue sharing model</li>
+        </ul>
+        <a href="white-label.html" class="service-link">Learn more →</a>
+      </div>
+      <div class="service-card reveal" style="transition-delay:0.3s">
+        <div class="service-icon" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(124,58,237,0.1))">📊</div>
+        <h3>Managed Campaigns</h3>
+        <p>Our expert team manages your entire campaign strategy, optimization, and reporting — you focus on your business.</p>
+        <ul class="service-features">
+          <li>Dedicated campaign manager</li>
+          <li>Weekly performance reports</li>
+          <li>A/B testing &amp; optimization</li>
+          <li>Custom integrations</li>
+        </ul>
+        <a href="campaign-management.html" class="service-link">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section style="background:var(--bg2)">
+  <div class="section-inner">
+    <div style="text-align:center" class="reveal">
+      <div class="section-tag"><span class="tag-dot"></span> Getting started</div>
+      <h2 class="section-title">How it <span class="hl">Works</span></h2>
+      <p class="section-desc" style="margin:16px auto 0">From sign-up to first campaign live in minutes.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal" style="transition-delay:0.05s"><div class="step-num">1</div><h4>Sign Up</h4><p>Create your free account and select your role — advertiser, publisher, or influencer.</p></div>
+      <div class="process-step reveal" style="transition-delay:0.12s"><div class="step-num">2</div><h4>Set Up</h4><p>Connect your tracking, set budgets, and configure your campaign goals.</p></div>
+      <div class="process-step reveal" style="transition-delay:0.19s"><div class="step-num">3</div><h4>Launch</h4><p>Go live instantly across our network. Real-time reporting starts immediately.</p></div>
+      <div class="process-step reveal" style="transition-delay:0.26s"><div class="step-num">4</div><h4>Optimize</h4><p>AI-powered recommendations and our team help you continuously improve ROI.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--bg)">
+  <div class="section-inner reveal">
+    <div class="cta-band">
+      <h2>Ready to scale your <span style="background:linear-gradient(135deg,var(--grad-start),var(--grad-end));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">performance?</span></h2>
+      <p>Start free and scale as you grow. No minimum spend. Cancel anytime.</p>
+      <div class="cta-buttons">
+        <a href="signup.html" class="btn-hero-primary">Start for Free →</a>
+        <a href="contact.html" class="btn-outline">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<script src="nav.js"></script>
+</body>
+</html>
