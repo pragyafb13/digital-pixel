@@ -2,11 +2,11 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEADup — Lead Qualification Platform · Digital Pixel</title>
+  <title>LEADup — Lead Qualification Platform · DGTL Pixel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-  <script>(function(){var t=localStorage.getItem('dp-theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+  <script>(function(){var t=localStorage.getItem('dp-theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
   <style>
     .product-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 30px; background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15)); border: 1px solid rgba(16,185,129,0.3); color: #10B981; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 20px; }
     .product-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
@@ -79,9 +79,9 @@
   <div class="page-hero-bg"></div>
   <div class="page-hero-grid"></div>
   <div class="page-hero-content">
-    <div class="product-badge"><span class="product-badge-dot"></span> LEADup by Digital Pixel</div>
+    <div class="product-badge"><span class="product-badge-dot"></span> LEADup by DGTL Pixel</div>
     <h1>Qualify Leads. <span class="hl">Close More.</span></h1>
-    <p>LEADup is Digital Pixel's AI-powered lead qualification engine. Score, filter, and route every lead in real time — so your sales team only touches leads that are ready to convert.</p>
+    <p>LEADup is DGTL Pixel's AI-powered lead qualification engine. Score, filter, and route every lead in real time — so your sales team only touches leads that are ready to convert.</p>
     <div class="hero-cta-row" style="margin-top:28px">
       <a href="signup.html?role=advertiser" class="btn-hero-primary">Start Free Trial →</a>
       <a href="contact.html" class="btn-outline">Request Demo</a>
@@ -124,10 +124,22 @@
 <!-- Stats -->
 <section style="background:var(--bg2)">
   <div class="section-inner">
-    <div class="stats-row reveal">
-      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="2.3">0</span>x</div><div class="stat-label">More Conversions</div></div>
-      <div class="stat-box"><div class="stat-number">-<span class="count-up" data-target="61">0</span>%</div><div class="stat-label">Wasted Sales Time</div></div>
-      <div class="stat-box"><div class="stat-number"><span class="count-up" data-target="50">0</span>M+</div><div class="stat-label">Leads Scored Monthly</div></div>
+    <div class="demo-stats-row reveal">
+      <div class="demo-chart-card">
+        <div class="dcc-title">Lead Volume Growth</div>
+        <svg viewBox="0 0 124 60" class="demo-svg"><defs><linearGradient id="lu-sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity=".28"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs><polygon points="0,54 21,47 42,40 62,30 83,20 104,11 124,4 124,60 0,60" fill="url(#lu-sg1)"/><polyline points="0,54 21,47 42,40 62,30 83,20 104,11 124,4" class="dc-sparkline dc-sp-p"/></svg>
+        <div class="dcc-sub">Leads scored at scale</div>
+      </div>
+      <div class="demo-chart-card">
+        <div class="dcc-title">Conversion Rate Lift</div>
+        <svg viewBox="0 0 80 80" class="demo-svg-sq"><circle cx="40" cy="40" r="28" class="dc-dt-bg"/><circle cx="40" cy="40" r="28" class="dc-dt-c" stroke-dasharray="132 44" style="transform:rotate(-90deg);transform-origin:40px 40px"/></svg>
+        <div class="dcc-sub">Lift vs. unscored leads</div>
+      </div>
+      <div class="demo-chart-card">
+        <div class="dcc-title">Qualified Lead Pipeline</div>
+        <svg viewBox="0 0 124 60" class="demo-svg"><rect x="3" y="50" width="14" height="10" rx="2" class="dc-bar-pk" opacity=".28"/><rect x="21" y="42" width="14" height="18" rx="2" class="dc-bar-pk" opacity=".42"/><rect x="39" y="34" width="14" height="26" rx="2" class="dc-bar-pk" opacity=".56"/><rect x="57" y="24" width="14" height="36" rx="2" class="dc-bar-pk" opacity=".70"/><rect x="75" y="14" width="14" height="46" rx="2" class="dc-bar-pk" opacity=".84"/><rect x="93" y="4"  width="14" height="56" rx="2" class="dc-bar-pk"/></svg>
+        <div class="dcc-sub">Only quality leads reach sales</div>
+      </div>
     </div>
   </div>
 </section>
