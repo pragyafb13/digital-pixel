@@ -148,19 +148,10 @@
     .hero-stat {
       background: var(--input-bg); border: 1px solid var(--border);
       border-radius: 12px; padding: 14px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
-    .hero-stat-value {
-      font-size: 1.4rem; font-weight: 800;
-      background: linear-gradient(135deg, var(--purple), var(--cyan));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    [data-theme="light"] .hero-stat-value {
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .hero-stat-visual { display: flex; align-items: center; justify-content: center; }
+    .hero-stat-label { font-size: 0.72rem; color: var(--muted); text-align: center; }
     .hero-chart {
       height: 80px; position: relative; margin-bottom: 20px;
       background: rgba(124,58,237,0.05); border-radius: 10px;
@@ -200,8 +191,8 @@
     .feed-info { flex: 1; }
     .feed-label { font-size: 0.78rem; font-weight: 600; color: var(--text); }
     .feed-sub { font-size: 0.7rem; color: var(--muted); }
-    .feed-value { font-size: 0.82rem; font-weight: 700; }
-    .feed-value.up { color: var(--green); }
+    .feed-value { display: flex; align-items: center; margin-left: auto; flex-shrink: 0; }
+    .feed-value.up svg { display: block; }
 
     /* ─── BRANDS MARQUEE ─── */
     .brands-section {
@@ -567,16 +558,36 @@
         </div>
         <div class="hero-stats-grid">
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="98.4">0</div>
+            <div class="hero-stat-visual">
+              <svg viewBox="0 0 44 44" style="width:44px;height:44px;overflow:visible">
+                <circle cx="22" cy="22" r="16" fill="none" stroke="rgba(124,58,237,0.15)" stroke-width="6"/>
+                <circle cx="22" cy="22" r="16" fill="none" stroke="var(--purple)" stroke-width="6"
+                  stroke-dasharray="90 11" stroke-linecap="round"
+                  style="transform:rotate(-90deg);transform-origin:22px 22px"/>
+              </svg>
+            </div>
             <div class="hero-stat-label">ROI Score</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="2.4">0</div>
+            <div class="hero-stat-visual">
+              <svg viewBox="0 0 60 28" style="width:60px;height:28px;overflow:visible">
+                <defs><linearGradient id="hsg-reach" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity=".3"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
+                <polygon points="0,24 12,18 24,14 36,9 48,5 60,1 60,28 0,28" fill="url(#hsg-reach)"/>
+                <polyline points="0,24 12,18 24,14 36,9 48,5 60,1" fill="none" stroke="var(--cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <div class="hero-stat-label">M Reach</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-value" data-count="99.1">0</div>
-            <div class="hero-stat-label">Uptime %</div>
+            <div class="hero-stat-visual">
+              <svg viewBox="0 0 44 44" style="width:44px;height:44px;overflow:visible">
+                <circle cx="22" cy="22" r="16" fill="none" stroke="rgba(16,185,129,0.15)" stroke-width="6"/>
+                <circle cx="22" cy="22" r="16" fill="none" stroke="var(--green)" stroke-width="6"
+                  stroke-dasharray="99 2" stroke-linecap="round"
+                  style="transform:rotate(-90deg);transform-origin:22px 22px"/>
+              </svg>
+            </div>
+            <div class="hero-stat-label">Uptime</div>
           </div>
         </div>
         <div class="hero-chart">
@@ -596,7 +607,9 @@
               <div class="feed-label">Campaign Alpha</div>
               <div class="feed-sub">Advertiser · 2 min ago</div>
             </div>
-            <div class="feed-value up">+24.8%</div>
+            <div class="feed-value up">
+              <svg viewBox="0 0 40 18" style="width:40px;height:18px;display:block"><polyline points="0,16 10,11 20,7 30,3 40,1" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="1" r="2.5" fill="var(--green)"/></svg>
+            </div>
           </div>
           <div class="feed-item">
             <div class="feed-icon" style="background:rgba(124,58,237,0.15)">⚡</div>
@@ -604,7 +617,9 @@
               <div class="feed-label">Publisher Network</div>
               <div class="feed-sub">Conversion · 5 min ago</div>
             </div>
-            <div class="feed-value up">+$12.4K</div>
+            <div class="feed-value up">
+              <svg viewBox="0 0 40 18" style="width:40px;height:18px;display:block"><polyline points="0,15 8,12 16,9 24,5 32,3 40,1" fill="none" stroke="var(--purple)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="1" r="2.5" fill="var(--purple)"/></svg>
+            </div>
           </div>
           <div class="feed-item">
             <div class="feed-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
@@ -612,7 +627,9 @@
               <div class="feed-label">Influencer Lead</div>
               <div class="feed-sub">TikTok · 8 min ago</div>
             </div>
-            <div class="feed-value up">+1.2K clicks</div>
+            <div class="feed-value up">
+              <svg viewBox="0 0 40 18" style="width:40px;height:18px;display:block"><polyline points="0,16 10,13 18,9 26,6 34,3 40,1" fill="none" stroke="var(--cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="1" r="2.5" fill="var(--cyan)"/></svg>
+            </div>
           </div>
         </div>
       </div>
